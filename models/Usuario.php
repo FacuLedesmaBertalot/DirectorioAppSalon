@@ -2,7 +2,8 @@
 
 namespace Model;
 
-class Usuario extends ActiveRecord {
+class Usuario extends ActiveRecord
+{
 
     // Base de Datos
     protected static $tabla = 'usuarios';
@@ -19,7 +20,8 @@ class Usuario extends ActiveRecord {
     public $token;
 
 
-    public function __construct($args = []) {
+    public function __construct($args = [])
+    {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
         $this->apellido = $args['apellido'] ?? '';
@@ -29,9 +31,20 @@ class Usuario extends ActiveRecord {
         $this->admin = $args['admin'] ?? null;
         $this->confirmado = $args['confirmado'] ?? null;
         $this->token = $args['token'] ?? '';
-
-        
     }
 
+    // Mensajes de validación para la Creaciónd de una cuenta
+    public function validarNuevaCuenta()
+    {
 
+        if (!$this->nombre) {
+            self::$alertas['error'][] = 'El Nombre del Cliente es Obligatorio';
+        }
+
+        if (!$this->apellido) {
+            self::$alertas['error'][] = 'El Apellido del Cliente es Obligatorio';
+        }
+
+        return self::$alertas;
+    }
 }
