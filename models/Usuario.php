@@ -33,7 +33,7 @@ class Usuario extends ActiveRecord
         $this->token = $args['token'] ?? '';
     }
 
-    // Mensajes de validación para la Creaciónd de una cuenta
+    // Mensajes de validación para la Creación de una cuenta
     public function validarNuevaCuenta()
     {
 
