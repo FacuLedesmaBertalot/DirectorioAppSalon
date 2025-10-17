@@ -2,6 +2,10 @@
 <p class="descripcion-pagina">Llena el Siguente Formulario para Crear una Cuenta</p>
 
 
+<?php 
+    include_once __DIR__ . "/../templates/alertas.php";
+?>
+
 <form class="formulario" action="/crear-cuenta" method="POST">
 
     <div class="campo">
