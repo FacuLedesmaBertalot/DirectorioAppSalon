@@ -19,16 +19,11 @@ class Router
 
     public function comprobarRutas()
     {
-        
-        // Proteger Rutas...
         session_start();
 
-        // Arreglo de rutas protegidas...
-        // $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
-
-        // $auth = $_SESSION['login'] ?? null;
-
-        $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        // Obtiene la URL actual de una forma más confiable.
+        // strtok() la limpia de parámetros GET (ej. /login?error=1 se convierte en /login)
+        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
@@ -37,28 +32,30 @@ class Router
             $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
-
         if ( $fn ) {
-            // Call user fn va a llamar una función cuando no sabemos cual sera
-            call_user_func($fn, $this); // This es para pasar argumentos
+            // Llama a la función del controlador y le pasa la instancia actual del Router ($this)
+            call_user_func($fn, $this); 
         } else {
             echo "Página No Encontrada o Ruta no válida";
         }
     }
 
+    // Muestra una vista
     public function render($view, $datos = [])
     {
-
-        // Leer lo que le pasamos  a la vista
+        // Pasa los datos a la vista
         foreach ($datos as $key => $value) {
-            $$key = $value;  // Doble signo de dolar significa: variable variable, básicamente nuestra variable sigue siendo la original, pero al asignarla a otra no la reescribe, mantiene su valor, de esta forma el nombre de la variable se asigna dinamicamente
+            $$key = $value;  // Variable variable
         }
 
-        ob_start(); // Almacenamiento en memoria durante un momento...
+        ob_start(); // Inicia el almacenamiento en memoria
 
-        // entonces incluimos la vista en el layout
+        // Incluye la vista específica
         include_once __DIR__ . "/views/$view.php";
-        $contenido = ob_get_clean(); // Limpia el Buffer
+        
+        $contenido = ob_get_clean(); // Limpia el buffer y guarda el contenido
+
+        // Incluye el layout principal que a su vez usará la variable $contenido
         include_once __DIR__ . '/views/layout.php';
     }
 }
