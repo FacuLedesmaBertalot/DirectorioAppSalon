@@ -15,5 +15,5 @@
 
 <div class="acciones">
     <a href="/">¿Ya Tienes una Cuenta? Inicia Sesión</a>
-    <a href="/crear-cuenta">¿Aún No Tiens una Cuenta? Crear Una</a>
+    <a href="/crear-cuenta">¿Aún No Tienes una Cuenta? Crear Una</a>
 </div>
