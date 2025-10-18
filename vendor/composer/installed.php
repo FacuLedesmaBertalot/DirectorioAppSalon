@@ -3,7 +3,7 @@
         'name' => 'facul/app-salon_php_mvc_js_sass',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'e7dcc2d43ddffb6775742e72251555f19946ef6a',
+        'reference' => '85c30343742f68d40707873aed9625ee89161620',
         'type' => 'proyect',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'facul/app-salon_php_mvc_js_sass' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'e7dcc2d43ddffb6775742e72251555f19946ef6a',
+            'reference' => '85c30343742f68d40707873aed9625ee89161620',
             'type' => 'proyect',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
