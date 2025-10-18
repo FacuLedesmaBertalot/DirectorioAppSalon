@@ -38,6 +38,11 @@ class LoginController {
             $usuario -> sincronizar($_POST); 
             $alertas = $usuario -> validarNuevaCuenta();
 
+            // Revisar que alerta este vacío
+            if (empty($alertas)) {
+                echo "Pasaste la Validación";
+            }
+
         }
         $router->render('auth/crear-cuenta', [
             'usuario' => $usuario,
