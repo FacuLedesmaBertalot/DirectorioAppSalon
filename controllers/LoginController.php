@@ -88,9 +88,9 @@ class LoginController {
         $alertas = [];
 
         $token = s($_GET['token']);
+        $usuario = Usuario::where('token', $token);
 
-        
-
+        debuguear($usuario);
 
         $router->render('auth/confirmar-cuenta', [
             'alertas' => $alertas
