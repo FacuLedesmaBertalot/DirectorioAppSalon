@@ -80,7 +80,16 @@ class LoginController {
         ]);
     }
 
-    public static function mensaje( Router $router) {
+    public static function mensaje(Router $router) {
         $router->render('auth/mensaje');
+    }
+
+    public static function confirmar(Router $router) {
+        $alertas = [];
+
+
+        $router->render('auth/confirmar-cuenta', [
+            'alertas' => $alertas
+        ]);
     }
 }
