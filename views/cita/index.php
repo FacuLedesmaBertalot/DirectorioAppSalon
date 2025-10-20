@@ -45,4 +45,9 @@
         <p class="text-center">Verifica que la Información sea Correcta</p>
 
     </div>
+
+    <div class="paginacion">
+        <button id="anterior" class="boton">&laquo; Anterior</button>
+        <button id="siguiente" class="boton">Siguiente &raquo;</button>
+    </div>
 </div>
