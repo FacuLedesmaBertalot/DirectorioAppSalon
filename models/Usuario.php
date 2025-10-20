@@ -33,6 +33,8 @@ class Usuario extends ActiveRecord
         $this->token = $args['token'] ?? '';
     }
 
+
+
     // Mensajes de validación para la Creación de una cuenta
     public function validarNuevaCuenta()
     {
@@ -60,6 +62,8 @@ class Usuario extends ActiveRecord
         return self::$alertas;
     }
 
+
+
     public function validarLogin() {
 
         if (!$this->email) {
@@ -73,12 +77,31 @@ class Usuario extends ActiveRecord
         return self::$alertas;
     }
 
+
+
     public function validarEmail() {
         if (!$this->email) {
             self::$alertas['error'][] = 'El Email es Obligatorio';
         }
         return self::$alertas;
     }
+
+
+
+    public function validarPassword() {
+
+        if (!$this->password) {
+            self::$alertas['error'][] = 'El Password es Obligatorio';
+        }
+
+        if (strlen($this->password) < 6) {
+            self::$alertas['error'][] = 'El Password debe Tener  al Menos 6 Caracteres';
+        }
+
+        return self::$alertas;
+    }
+
+
 
     // Revisa si el Usuario ya existe
     public function existeUsuario() {
@@ -93,16 +116,21 @@ class Usuario extends ActiveRecord
         return $resultado;
     }
 
+
     
     public function hashPassword() {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }
+
+
 
     public function crearToken() {
         $this->token = uniqid();
 
     }
 
+
+    
     public function comprobarPasswordAndVerificado($password) {
         
         $resultado = password_verify($password, $this->password);
@@ -114,7 +142,5 @@ class Usuario extends ActiveRecord
         }
         
     }
-
-
 
 }
