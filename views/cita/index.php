@@ -13,6 +13,25 @@
         <h2>Tus Datos y Cita</h2>
         <p>Coloca tus Datos y Fecha de tu Cita</p>
 
+        <form class="formulario">
+            <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" value="<?php echo $nombre; ?>" disabled>
+            </div>
+
+            <div class="campo">
+                <label for="fecha">Fecha</label>
+                <input type="date" name="fecha" id="fecha">
+            </div>
+
+            <div class="campo">
+                <label for="hora">Hora</label>
+                <input type="time" name="hora" id="hora">
+            </div>
+
+
+        </form>
+
     </div>
 
     <div id="paso-3" class="seccion">
