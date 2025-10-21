@@ -106,11 +106,35 @@ async function consultarAPI() {
         const url = 'http://appsalon.test/api/servicios';
         const resultado = await fetch(url);
         const servicios = await resultado.json();
-
-        console.log(servicios);
+        mostrarServicios(servicios);
 
         
     } catch (error) {
         console.log(error);
     }
+}
+
+
+function mostrarServicios(servicios) {
+    servicios.forEach (servicio => {
+        const { id, nombreServicio, precio} = servicio;
+
+        const nombre = document.createElement('P');
+        nombre.classList.add('nombre-servicio');
+        nombre.textContent = nombreServicio;
+
+        const precioServicio = document.createElement('P');
+        precioServicio.classList.add('precio-servicio');
+        precioServicio.textContent = `$${precio}`;
+
+        const servicioDiv = document.createElement('DIV');
+        servicioDiv.classList.add('servicio');
+        servicioDiv.dataset.idServicio = id;
+
+        servicioDiv.appendChild(nombre);
+        servicioDiv.appendChild(precioServicio);
+
+        document.querySelector('#servicios').appendChild(servicioDiv);
+
+    });
 }
