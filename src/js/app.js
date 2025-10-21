@@ -6,13 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
     iniciarApp();
 });
 
+
 function iniciarApp() {
     mostrarSeccion(); // Muestra y Oculta las secciones
     tabs(); // Cambia la sección cuando se presionnan los tabs
     botonesPaginador(); // Agrega o quita los botones del paginador
     paginaSiguiente();
     paginaAnterior();
+
+    consultarAPI(); // Consulta la API en el Backend de PHP
 }
+
 
 function mostrarSeccion() {
 
@@ -37,6 +41,7 @@ function mostrarSeccion() {
     tab.classList.add('actual');
 }
 
+
 function tabs() {
     const botones = document.querySelectorAll('.tabs button');
 
@@ -49,6 +54,7 @@ function tabs() {
         });
     });
 }
+
 
 function botonesPaginador() {
     const paginaAnterior = document.querySelector('#anterior');
@@ -68,6 +74,8 @@ function botonesPaginador() {
 
     mostrarSeccion();
 }
+
+
 function paginaAnterior() {
     const paginaAnterior = document.querySelector('#anterior');
 
@@ -79,6 +87,7 @@ function paginaAnterior() {
     })
 }
 
+
 function paginaSiguiente() {
     const paginaSiguiente = document.querySelector('#siguiente');
 
@@ -88,4 +97,20 @@ function paginaSiguiente() {
 
         botonesPaginador();
     })
+}
+
+
+async function consultarAPI() {
+
+    try {
+        const url = 'http://appsalon.test/api/servicios';
+        const resultado = await fetch(url);
+        const servicios = await resultado.json();
+
+        console.log(servicios);
+
+        
+    } catch (error) {
+        console.log(error);
+    }
 }
