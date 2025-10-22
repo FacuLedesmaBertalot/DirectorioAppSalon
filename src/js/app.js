@@ -195,7 +195,7 @@ function seleccionarFecha() {
 
         if ([6, 0].includes(dia)) {
             e.target.value = '';
-            mostrarAlerta('Fines de Semana No Permitidos', 'error');
+            mostrarAlerta('Fines de Semana No Permitidos', 'error', '.formulario');
         } else {
             cita.fecha = e.target.value;
         }
@@ -212,7 +212,7 @@ function seleccionarHora() {
 
         if (hora < 10 || hora > 18) {
             e.target.value = '';
-            mostrarAlerta('Hora No Válida', 'error');
+            mostrarAlerta('Hora No Válida', 'error', '.formulario');
         } else {
             cita.hora = e.target.value;
         }
@@ -220,12 +220,13 @@ function seleccionarHora() {
 }
 
 
-function mostrarAlerta(mensaje, tipo) {
+function mostrarAlerta(mensaje, tipo, elemento, desaparece = true) {
 
     // Previene que se generen más de una alerta
     const alertaPrevia = document.querySelector('.alerta');
-    if (alertaPrevia) return;
-
+    if (alertaPrevia) {
+        alertaPrevia.remove();
+    }
 
     // Scripting para crear la Alerta
     const alerta = document.createElement('DIV');
@@ -233,22 +234,25 @@ function mostrarAlerta(mensaje, tipo) {
     alerta.classList.add('alerta');
     alerta.classList.add(tipo);
 
-    const formulario = document.querySelector('.formulario');
-    formulario.appendChild(alerta);
+    const referencia = document.querySelector(elemento);
+    referencia.appendChild(alerta);
     
 
-    // Eliminar la Alerta después de 3 Segundos
-    setTimeout(() => {
-        alerta.remove();
-    }, 3000);
+    if (desaparece) {
+        // Eliminar la Alerta después de 3 Segundos
+        setTimeout(() => {
+            alerta.remove();
+        }, 3000);
+    }
+
 }
 
 
 function mostrarResumen() {
     const resumen = document.querySelector('.contenido-resumen');
 
-    if (Object.values(cita).includes('')) {
-        console.log('Hacen falta datos');
+    if (Object.values(cita).includes('') || cita.servicios.length === 0) {
+        mostrarAlerta('Faltan Datos de Servicios, Fecha u Hora', 'error', '.contenido-resumen', false);
     } else {
         console.log('Todo bien');
     }
