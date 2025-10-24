@@ -263,23 +263,23 @@ function mostrarResumen() {
 
     // Formatear el div de resumen
     const { nombre, fecha, hora, servicios } = cita;
+    console.log(cita);
 
-    const nombreCliente = document.createElement('P');
-    nombreCliente.innerHTML = `<span>Nombre:</span> ${nombre}`;
 
-    const fechaCita = document.createElement('P');
-    fechaCita.innerHTML = `<span>Fecha:</span> ${fecha}`;
 
-    const horaCita = document.createElement('P');
-    horaCita.innerHTML = `<span>Hora:</span> ${hora}`;
+    // Heading para servicios en resumen
+    const headingServicios = document.createElement('H3');
+    headingServicios.textContent = 'Resumen de Servicios';
+    resumen.appendChild(headingServicios);
 
+    // Iterando y mostrando los servicios
     servicios.forEach(servicio => {
-        const { id, precio, nombre} = servicio;
+        const { id, precio, nombreServicio} = servicio;
         const contenedorServicio = document.createElement('DIV');
         contenedorServicio.classList.add('contenedor-servicio');
 
         const textoServicio = document.createElement('P');
-        textoServicio.textContent = nombre;
+        textoServicio.textContent = nombreServicio;
 
         const precioServicio = document.createElement('P');
         precioServicio.innerHTML = `<span>Precio:</span> $${precio}`;
@@ -289,8 +289,21 @@ function mostrarResumen() {
 
         resumen.appendChild(contenedorServicio);
         
-    })
+    });
 
+    // Heading para Cita en resumen
+    const headingCita = document.createElement('H3');
+    headingCita.textContent = 'Resumen de Cita';
+    resumen.appendChild(headingCita);
+    
+    const nombreCliente = document.createElement('P');
+    nombreCliente.innerHTML = `<span>Nombre:</span> ${nombre}`;
+
+    const fechaCita = document.createElement('P');
+    fechaCita.innerHTML = `<span>Fecha:</span> ${fecha}`;
+
+    const horaCita = document.createElement('P');
+    horaCita.innerHTML = `<span>Hora:</span> ${hora} Hs`;
 
     resumen.appendChild(nombreCliente);
     resumen.appendChild(fechaCita);
