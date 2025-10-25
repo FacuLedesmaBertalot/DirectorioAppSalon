@@ -178,7 +178,6 @@ function seleccionarServicio(servicio) {
         divServicio.classList.add('seleccionado');
     }
 
-    console.log(cita);
 }
 
 
@@ -263,7 +262,6 @@ function mostrarResumen() {
 
     // Formatear el div de resumen
     const { nombre, fecha, hora, servicios } = cita;
-    console.log(cita);
 
 
 
@@ -333,9 +331,16 @@ function mostrarResumen() {
 
 
 async function reservarCita() {
+
+    const { nombre, fecha, hora, servicios } = cita;
+
+    const idServicios = servicios.map(servicio => servicio.id);
+
     const datos = new FormData();
-    datos.append('nombre', 'Juan');
-    datos.append('nombre', 'Juan');
+    datos.append('nombre', nombre);
+    datos.append('fecha', fecha);
+    datos.append('hora', hora);
+    datos.append('servicios', idServicios);
 
     // Petición Hacia la api
     const url = 'http://appsalon.test/api/citas';
