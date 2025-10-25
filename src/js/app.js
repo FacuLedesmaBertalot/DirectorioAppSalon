@@ -342,7 +342,8 @@ async function reservarCita() {
         icon: "success",
         title: "Cita Creada",
         text: "Tu Cita fue Creada Correctamente",
-        button: "OK",
+        confirmButtonText: "OK", // Propiedad correcta para el texto
+        confirmButtonColor: "#0da6f3", // Propiedad para cambiar el color
       }).then( () => {
         setTimeout(() => {
           window.location.reload();
