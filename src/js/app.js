@@ -335,12 +335,13 @@ function mostrarResumen() {
 async function reservarCita() {
     const datos = new FormData();
     datos.append('nombre', 'Juan');
+    datos.append('nombre', 'Juan');
 
     // Petición Hacia la api
     const url = 'http://appsalon.test/api/citas';
-
     const respuesta = await fetch(url, {
-        method: 'POST'
+        method: 'POST',
+        body: datos
     });
 
     const resultado = await respuesta.json();
