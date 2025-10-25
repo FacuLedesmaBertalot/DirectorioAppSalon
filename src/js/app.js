@@ -332,10 +332,20 @@ function mostrarResumen() {
 }
 
 
-function reservarCita() {
+async function reservarCita() {
     const datos = new FormData();
-
     datos.append('nombre', 'Juan');
+
+    // Petición Hacia la api
+    const url = 'http://appsalon.test/api/citas';
+
+    const respuesta = await fetch(url, {
+        method: 'POST'
+    });
+
+    const resultado = await respuesta.json();
+    console.log(resultado);
+
     // console.log([...datos]);
 
 }
