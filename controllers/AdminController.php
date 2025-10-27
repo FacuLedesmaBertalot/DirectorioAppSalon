@@ -14,6 +14,9 @@ class AdminController {
             session_start();
         }
 
+        $fecha = date('Y-m-d');
+
+
         // Consultar la BD
         $consulta = "SELECT citas.id, citas.hora, CONCAT( usuarios.nombre, ' ', usuarios.apellido) as cliente, ";
         $consulta .= " usuarios.email, usuarios.telefono, servicios.nombreServicio, servicios.precio  ";
@@ -30,7 +33,8 @@ class AdminController {
 
         $router->render('admin/index', [
             'nombre' => $_SESSION['nombre'],
-            'citas' => $citas
+            'citas' => $citas,
+            'fecha' => $fecha
         ]);
     }
 }
