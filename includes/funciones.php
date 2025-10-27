@@ -26,6 +26,7 @@ function esUltimo(string $actual, string $proximo): bool {
 function isAuth() : void {
     if (!isset($_SESSION['login'])) {
         header('Location: /');
+        exit;
     }
 }
 
@@ -33,5 +34,6 @@ function isAdmin() : void {
 
     if(!isset($_SESSION['admin'])) {
         header('Location: /');
+        exit;
     }
 }
