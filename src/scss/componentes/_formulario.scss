@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
@@ -21,7 +22,11 @@
         border-radius: 1rem;
 
         &:disabled {
-            background-color: lighten(v.$negro, 30%);
+            // Así estaba antes:
+            // background-color: lighten(v.$negro, 30%);
+            
+            // Así es ahora:
+            background-color: color.adjust(v.$negro, $lightness: 30%);
             color: v.$blanco;
             cursor: not-allowed;
         }
