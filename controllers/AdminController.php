@@ -16,7 +16,7 @@ class AdminController {
 
         // Consultar la BD
         $consulta = "SELECT citas.id, citas.hora, CONCAT( usuarios.nombre, ' ', usuarios.apellido) as cliente, ";
-        $consulta .= " usuarios.email, usuarios.telefono, servicios.nombreServicio as servicio, servicios.precio  ";
+        $consulta .= " usuarios.email, usuarios.telefono, servicios.nombreServicio, servicios.precio  ";
         $consulta .= " FROM citas  ";
         $consulta .= " INNER JOIN usuarios ";
         $consulta .= " ON citas.usuarioId=usuarios.id  ";
