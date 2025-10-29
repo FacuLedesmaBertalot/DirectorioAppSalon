@@ -13,8 +13,12 @@ class ServicioController {
             session_start();
         }
 
+        $servicios = Servicio::all();
+
+
         $router->render('servicios/index', [
-            'nombre' => $_SESSION['nombre']
+            'nombre' => $_SESSION['nombre'],
+            'servicios' => $servicios
         ]);
     }
 
@@ -24,6 +28,7 @@ class ServicioController {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        
 
         $servicio = new Servicio;
         $alertas = [];
