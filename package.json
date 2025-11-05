@@ -5,9 +5,10 @@
   "author": "Juan De la torre @codigoconjuan",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "gulp": "gulp"
-  },
+"scripts": {
+  "dev": "gulp",
+  "build": "gulp build"
+},
   "license": "ISC",
   "devDependencies": {
     "glob": "^10.3.12",
