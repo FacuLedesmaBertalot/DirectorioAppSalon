@@ -42,7 +42,7 @@ class Email
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has Creado tu Cuenta en AppSalon, solo debes confirmarla presionando en el siguiente enlace:</p>";
-        $contenido .= "<p>Presiona Aquí: <a href='http://appsalon.test/confirmar-cuenta?token=". $this->token . "'>Confirmar Cuenta</a></p>";
+        $contenido .= "<p>Presiona Aquí: <a href='" . $_ENV['APP_URL'] . "/confirmar-cuenta?token=". $this->token . "'>Confirmar Cuenta</a></p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido.= "</html>";
 
@@ -75,7 +75,7 @@ class Email
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo. </p>";
-        $contenido .= "<p>Presiona Aquí: <a href='http://appsalon.test/recuperar?token=". $this->token . "'>Reestablecer Password</a></p>";
+        $contenido .= "<p>Presiona Aquí: <a href='" . $_ENV['APP_URL'] . "/recuperar?token=". $this->token . "'>Reestablecer Password</a></p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido.= "</html>";
 
