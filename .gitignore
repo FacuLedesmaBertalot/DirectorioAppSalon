@@ -5,6 +5,6 @@
 /vendor
 
 # Archivos de caché, logs, etc., que tampoco deberían subirse
-.env
+includes/.env
 /storage/*.log
 /public/build
