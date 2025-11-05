@@ -7,3 +7,4 @@
 # Archivos de caché, logs, etc., que tampoco deberían subirse
 includes/.env
 /storage/*.log
+/public/build
